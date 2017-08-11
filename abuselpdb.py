@@ -1,5 +1,4 @@
-import requests, json, argparse, re, certifi, urllib3
-import urllib3.contrib.pyopenssl
+import requests, json, argparse, re
 
 def check_ip(api_key, ip, days):
     req = "https://www.abuseipdb.com/check/{0}/json?key={1}&days={2}".format(ip, api_key, days)
