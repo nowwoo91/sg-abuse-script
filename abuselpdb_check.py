@@ -2,7 +2,7 @@ import requests, json, argparse, re, csv, os
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-def check_ip(api_key, ip, days=30):
+def check_ip(api_key, ip, days='30'):
     req = "https://www.abuseipdb.com/check/{0}/json?key={1}&days={2}".format(ip, api_key, days)
     #res = http.request('GET',req).json()
     res = requests.get(req,verify=False).json()
@@ -43,6 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('-s','--source', help="ip list file path",default='check_ip.csv')
     parser.add_argument('-r','--result', help="check result file path",default='check_result.csv')
     parser.add_argument('--check', help="check",default=True,action="store_true")
+    parser.add_argument('-d','--days', help="days",default='30')
 
     args = parser.parse_args()
     if not args.key:
@@ -51,5 +52,5 @@ if __name__ == '__main__':
     datas=[]
     if args.check:
         for row in read_csv(args.source):
-            datas.append(check_ip(api_key=key,ip=row['ip']))
+            datas.append(check_ip(api_key=key,ip=row['ip']),days=args.days)
         write_csv(args.result, datas)
