@@ -3,6 +3,9 @@
 **run script**
 
 python abuselpdb.py -f $csv_filepath
+(example) python abuselpdb.py -f report_ip_test.csv
+
+(default csv path) report_ip.csv 
 
 **ABUSED API KEY and Userid**
 
