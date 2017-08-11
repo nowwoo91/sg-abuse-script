@@ -52,5 +52,5 @@ if __name__ == '__main__':
     datas=[]
     if args.check:
         for row in read_csv(args.source):
-            datas.append(check_ip(api_key=key,ip=row['ip']),days=args.days)
+            datas.append(check_ip(api_key=key,ip=row['ip'],days=args.days))
         write_csv(args.result, datas)
